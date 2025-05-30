@@ -7,7 +7,8 @@
 </nav>
 <style>
 .main-navbar {
-    width: 100%;
+    width: 100vw;
+    min-width: 320px;
     background: linear-gradient(90deg, #1e3a5c 70%, #f9a825 100%);
     display: flex;
     justify-content: center;
@@ -16,6 +17,11 @@
     box-shadow: 0 4px 24px rgba(30,58,92,0.08);
     border-radius: 0 0 1.2rem 1.2rem;
     gap: 1.5rem;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: transparent;
 }
 .main-navbar a {
     color: #fff;
