@@ -17,7 +17,7 @@ header {
     background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
     color: var(--white);
     padding: 2rem 0 1.5rem 0;
-    box-shadow: var(--shadow);
+    /*box-shadow: var(--shadow);*/
     text-align: center;
     position: relative;
     overflow: hidden;
