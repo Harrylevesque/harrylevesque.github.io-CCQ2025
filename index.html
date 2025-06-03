@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCQ Construction - Building Your Future</title>
+    <title>Soucy Industrial - Building Your Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -218,18 +218,111 @@
             background: var(--accent);
             transform: scale(1.04);
         }
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 1.2rem 0 0.7rem 0;
-            margin-top: 2rem;
+        .main-card {
+            background: #f8fafc;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(30,58,92,0.07);
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Footer styles */
+        .footer-bar {
+            width: 100%;
+            background: #1e3a5c;
+            color: #fff;
+            border-radius: 1.2rem 1.2rem 0 0;
             font-size: 1rem;
             letter-spacing: 1px;
-            border-radius: 1.2rem 1.2rem 0 0;
             animation: fadeIn 2s;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            position: relative;
         }
-        /* Animations */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0.7rem 0 0.2rem 0;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 0.2rem 1rem;
+            border-radius: 1rem;
+            white-space: nowrap;
+        }
+        .footer-links a:hover {
+            color: #f9a825;
+            background: rgba(255,255,255,0.08);
+        }
+        .footer-center {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 0.2rem 0 0.2rem 0;
+            user-select: none;
+            background: transparent;
+            box-sizing: border-box;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.7rem 0 2.5rem 0;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #1e3a5c;
+            border: none;
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(30,58,92,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            vertical-align: middle;
+        }
+        .lang-switcher:hover {
+            background: #f9a825;
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .footer-bottom-space {
+            height: 0.7rem;
+        }
+        @media (max-width: 600px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.7rem 0 0.2rem 0;
+            }
+            .footer-bottom {
+                padding-bottom: 3.2rem;
+            }
+            .footer-bottom-space {
+                height: 1.2rem;
+            }
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -273,176 +366,140 @@
 </head>
 <body>
     <header>
-        <h1>CCQ Construction</h1>
-        <p>Building Your Future, One Project at a Time</p>
-        <iframe src="https://harrylevesque.github.io/harrylevesque.github.io-CCQ2025/navbar.html" style="border:none;width:100vw;height:3.5rem;background:transparent;" scrolling="no" allowtransparency="true"></iframe>
+        <img src="img/image%20(11).png" alt="Soucy Industriel Logo" style="height:3.2rem;max-width:180px;border-radius:0.7rem;vertical-align:middle;margin-bottom:0.5rem;">
+        <!--
+        <h1 data-lang="fr">Soucy Industriel</h1>
+        <h1 data-lang="en" style="display:none;">Soucy Industriel</h1>
+        <h1 data-lang="es" style="display:none;">Soucy Industriel</h1>
+        -->
+        <p data-lang="fr">Votre partenaire de confiance pour des solutions industrielles et de construction innovantes.</p>
+        <p data-lang="en" style="display:none;">Your trusted partner for innovative industrial and construction solutions.</p>
+        <p data-lang="es" style="display:none;">Su socio de confianza para soluciones industriales y de construcción innovadoras.</p>
+        <iframe src="navbar.html" style="border:none;width:100vw;height:3.5rem;background:transparent;" scrolling="no" allowtransparency="true"></iframe>
     </header>
-    <div class="hero">
+    <div class="hero main-card">
         <div class="hero-text">
-            <h2>Professional Construction Services for Residential & Commercial Projects</h2>
-            <p>From design to completion, CCQ Construction delivers quality, safety, and reliability. Let us help you build your dreams!</p>
-            <button class="cta-btn" onclick="window.location.href='contact.html'">Get a Free Quote</button>
+            <h2 data-lang="en">Building Excellence, Together</h2>
+            <h2 data-lang="fr" style="display:none;">Construire l'excellence, ensemble</h2>
+            <h2 data-lang="es" style="display:none;">Construyendo la excelencia, juntos</h2>
+            <p data-lang="en">Discover our expertise in construction, engineering, and industrial services. Learn more about our mission, values, and team by exploring the site.</p>
+            <p data-lang="fr" style="display:none;">Découvrez notre expertise en construction, ingénierie et services industriels. Pour en savoir plus sur notre mission, nos valeurs et notre équipe, parcourez notre site.</p>
+            <p data-lang="es" style="display:none;">Descubra nuestra experiencia en construcción, ingeniería y servicios industriales. Conozca más sobre nuestra misión, valores y equipo explorando el sitio.</p>
+            <button class="cta-btn" onclick="window.location.href='services.html'" data-lang="en">Our Services</button>
+            <button class="cta-btn" onclick="window.location.href='services.html'" data-lang="fr" style="display:none;">Nos Services</button>
+            <button class="cta-btn" onclick="window.location.href='services.html'" data-lang="es" style="display:none;">Nuestros Servicios</button>
         </div>
         <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Construction site">
+            <img src="img/image%20(11).png" alt="Construction site">
         </div>
     </div>
-    <section id="why-choose">
-        <h3>Why Choose CCQ Construction?</h3>
-        <div class="services">
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/checked--v1.png" alt="Quality">
-                <h4>Unmatched Quality</h4>
-                <p>We use only the best materials and skilled labor to ensure every project exceeds expectations.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/clock--v1.png" alt="On Time">
-                <h4>On-Time Delivery</h4>
-                <p>Our team is committed to meeting deadlines and keeping your project on track.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/handshake.png" alt="Trust">
-                <h4>Trusted Partner</h4>
-                <p>We build lasting relationships with our clients through transparency and integrity.</p>
-            </div>
+    <section id="team" class="main-card">
+        <h3 data-lang="en">Meet Our Team</h3>
+        <h3 data-lang="fr" style="display:none;">Rencontrez notre équipe</h3>
+        <h3 data-lang="es" style="display:none;">Conozca a nuestro equipo</h3>
+        <p data-lang="en">Our dedicated professionals drive our success. <a href="about.html">Learn more</a>.</p>
+        <p data-lang="fr" style="display:none;">Des professionnels engagés au cœur de notre réussite. <a href="about.html">En savoir plus</a>.</p>
+        <p data-lang="es" style="display:none;">Profesionales dedicados impulsan nuestro éxito. <a href="about.html">Más información</a>.</p>
+    </section>
+    <section id="contact-info" class="main-card">
+        <h3 data-lang="en">Contact Us</h3>
+        <h3 data-lang="fr" style="display:none;">Contactez-nous</h3>
+        <h3 data-lang="es" style="display:none;">Contáctenos</h3>
+        <p data-lang="en">Questions or project ideas? <a href="contact.html">Get in touch</a>.</p>
+        <p data-lang="fr" style="display:none;">Des questions ou un projet? <a href="contact.html">Contactez-nous</a>.</p>
+        <p data-lang="es" style="display:none;">¿Preguntas o ideas de proyecto? <a href="contact.html">Contáctenos</a>.</p>
+    </section>
+    <section id="about" class="main-card">
+        <h3 data-lang="en">About Soucy Industriel</h3>
+        <h3 data-lang="fr" style="display:none;">À propos de Soucy Industriel</h3>
+        <h3 data-lang="es" style="display:none;">Sobre Soucy Industriel</h3>
+        <p data-lang="en">Founded in 1931, we have a rich history in industrial innovation. <a href="about.html">Read our story</a>.</p>
+        <p data-lang="fr" style="display:none;">Fondée en 1931, notre entreprise a une histoire riche en innovation industrielle. <a href="about.html">Lire notre histoire</a>.</p>
+        <p data-lang="es" style="display:none;">Fundada en 1931, tenemos una rica historia en innovación industrial. <a href="about.html">Lee nuestra historia</a>.</p>
+    </section>
+    <section id="gallery" class="main-card">
+        <h3 data-lang="en">Project Gallery</h3>
+        <h3 data-lang="fr" style="display:none;">Galerie de projets</h3>
+        <h3 data-lang="es" style="display:none;">Galería de proyectos</h3>
+        <p data-lang="en">See highlights from our recent projects. <a href="gallery.html">View gallery</a>.</p>
+        <p data-lang="fr" style="display:none;">Découvrez nos réalisations récentes. <a href="gallery.html">Voir la galerie</a>.</p>
+        <p data-lang="es" style="display:none;">Vea lo más destacado de nuestros proyectos recientes. <a href="gallery.html">Ver galería</a>.</p>
+    </section>
+    <!-- Remove the iframe and insert the footer directly -->
+    <div class="footer-bar">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </div>
-    </section>
-    <section id="testimonials">
-        <h3>What Our Clients Say</h3>
-        <div class="services">
-            <div class="service">
-                <p>"CCQ Construction transformed our home beyond our expectations. Professional, reliable, and friendly!"</p>
-                <strong>- Sarah L.</strong>
-            </div>
-            <div class="service">
-                <p>"The team delivered our office renovation on time and on budget. Highly recommended!"</p>
-                <strong>- Mark D.</strong>
-            </div>
+        <div class="footer-center">
+            &copy; 2025 harry@ihaveanidea.com
         </div>
-    </section>
-    <section id="services">
-        <h3>Our Services</h3>
-        <div class="services">
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/worker-male.png" alt="General Contracting">
-                <h4>General Contracting</h4>
-                <p>Complete project management for residential and commercial builds.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/blueprint.png" alt="Design & Planning">
-                <h4>Design & Planning</h4>
-                <p>Expert architectural design and planning for your next project.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/maintenance.png" alt="Renovation">
-                <h4>Renovation</h4>
-                <p>Modernize and upgrade your property with our renovation services.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/crane.png" alt="Project Management">
-                <h4>Project Management</h4>
-                <p>Efficient and transparent management from start to finish.</p>
-            </div>
+        <div class="footer-bottom">
+            <button class="lang-switcher" id="lang-switcher" title="Change language" aria-label="Change language">
+                <span id="lang-short">EN</span>
+            </button>
+            <div class="footer-bottom-space"></div>
         </div>
-    </section>
-    <section id="gallery">
-        <h3>Project Gallery</h3>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Project 1">
-            <img src="https://images.unsplash.com/photo-1503389152951-9c3d8b6e9a2f?auto=format&fit=crop&w=400&q=80" alt="Project 2">
-            <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=400&q=80" alt="Project 3">
-            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Project 4">
-        </div>
-    </section>
-    <section id="about">
-        <h3>About CCQ Construction</h3>
-        <div class="about">
-            <div class="about-text">
-                <p><strong>CCQ Construction</strong> is a trusted leader in the construction industry, serving our community for over 15 years. Our team of skilled professionals is dedicated to delivering exceptional results, on time and on budget. We value safety, quality, and customer satisfaction above all else.</p>
-                <ul>
-                    <li>Licensed & Insured</li>
-                    <li>Experienced Team</li>
-                    <li>Transparent Pricing</li>
-                    <li>Customer-Focused Approach</li>
-                </ul>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=200&q=80" alt="Team">
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <h3>Contact Us</h3>
-        <form class="contact-form" autocomplete="off" onsubmit="event.preventDefault(); alert('Thank you for contacting CCQ Construction! We will get back to you soon.'); this.reset();">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-    <section>
-        <h3>Our Process</h3>
-        <div class="services">
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/idea.png" alt="Consultation">
-                <h4>Consultation</h4>
-                <p>We start with a free consultation to understand your needs and vision.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/plan.png" alt="Planning">
-                <h4>Planning</h4>
-                <p>Our experts design and plan every detail for a smooth project.</p>
-            </div>
-            <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/hammer.png" alt="Execution">
-                <h4>Execution</h4>
-                <p>We build with precision, quality, and safety at every step.</p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h3>Frequently Asked Questions</h3>
-        <div class="services">
-            <div class="service">
-                <h4>How do I get a quote?</h4>
-                <p>Contact us through our form or call us directly. We offer free consultations and quotes for all projects.</p>
-            </div>
-            <div class="service">
-                <h4>Are you licensed and insured?</h4>
-                <p>Yes, CCQ Construction is fully licensed and insured for all types of construction projects.</p>
-            </div>
-            <div class="service">
-                <h4>What areas do you serve?</h4>
-                <p>We serve the greater metropolitan area and surrounding regions. Contact us to see if we can help in your location!</p>
-            </div>
-        </div>
-    </section>
-    <footer>
-        &copy; 2025 CCQ Construction. All rights reserved.
-    </footer>
+    </div>
+    <style>
+        /* ...existing footer styles... */
+        .footer-bar { width: 100%; background: #1e3a5c; color: #fff; border-radius: 1.2rem 1.2rem 0 0; font-size: 1rem; letter-spacing: 1px; animation: fadeIn 2s; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; padding: 0; position: relative; }
+        .footer-links { display: flex; justify-content: center; align-items: center; gap: 1.5rem; width: 100%; padding: 0.7rem 0 0.2rem 0; box-sizing: border-box; flex-wrap: wrap; }
+        .footer-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: color 0.2s; padding: 0.2rem 1rem; border-radius: 1rem; white-space: nowrap; }
+        .footer-links a:hover { color: #f9a825; background: rgba(255,255,255,0.08); }
+        .footer-center { width: 100%; text-align: center; font-size: 1rem; padding: 0.2rem 0 0.2rem 0; user-select: none; background: transparent; box-sizing: border-box; }
+        .footer-bottom { width: 100%; display: flex; justify-content: center; align-items: center; padding: 0.7rem 0 2.5rem 0; box-sizing: border-box; flex-direction: column; }
+        .lang-switcher { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #1e3a5c; border: none; border-radius: 50%; width: 2.2rem; height: 2.2rem; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(30,58,92,0.10); transition: background 0.2s, color 0.2s, transform 0.2s; vertical-align: middle; }
+        .lang-switcher:hover { background: #f9a825; color: #fff; transform: scale(1.08); }
+        .footer-bottom-space {
+            height: 0.7rem;
+        }
+        @media (max-width: 600px) {
+            .footer-links { flex-direction: column; gap: 0.5rem; padding: 0.7rem 0 0.2rem 0; }
+            .footer-bottom { padding-bottom: 3.2rem; }
+            .footer-bottom-space {
+                height: 1.2rem;
+            }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
     <script>
-        // Animate nav links on scroll
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) target.scrollIntoView({behavior:'smooth'});
-            });
+    // --- Language switcher logic with icon and localStorage ---
+    const LANGS = ['en', 'fr', 'es'];
+    const LANG_LABELS = {en: 'EN', fr: 'FR', es: 'ES'};
+    let langIdx = 0;
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
+            el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
         });
-        // Animate elements on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('section, .service, .gallery img, .about-img img');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if(rect.top < window.innerHeight - 60) {
-                    el.style.opacity = 1;
-                    el.style.transform = 'none';
-                }
+        var langShort = document.getElementById('lang-short');
+        if (langShort) langShort.textContent = LANG_LABELS[lang];
+        localStorage.setItem('site-lang', lang);
+    }
+    function getLangIdx(lang) {
+        return LANGS.indexOf(lang) !== -1 ? LANGS.indexOf(lang) : 0;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        let stored = localStorage.getItem('site-lang');
+        langIdx = getLangIdx(stored || 'en');
+        setLang(LANGS[langIdx]);
+        var langSwitcher = document.getElementById('lang-switcher');
+        if (langSwitcher) {
+            langSwitcher.addEventListener('click', function() {
+                langIdx = (langIdx + 1) % LANGS.length;
+                setLang(LANGS[langIdx]);
             });
         }
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('storage', function() {
+            let stored = localStorage.getItem('site-lang');
+            langIdx = getLangIdx(stored || 'en');
+            setLang(LANGS[langIdx]);
+        });
+    });
     </script>
+    <!-- ...existing code... -->
 </body>
 </html>

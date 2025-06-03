@@ -6,46 +6,409 @@
     <title>Gallery - CCQ Construction</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-card {
+            background: #f8fafc;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(30,58,92,0.07);
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Lightbox styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(20,20,20,0.95); /* neutral dark, no blue */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.2s;
+        }
+        .lightbox-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 84vw;
+            max-height: 90vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .lightbox-img-wrapper {
+            width: 78vw;
+            max-width: 900px;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .lightbox-content img {
+            width: 100%;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 0.8rem;
+            box-shadow: 0 4px 24px rgba(30,58,92,0.18);
+            object-fit: contain;
+            transition: transform 0.3s cubic-bezier(.77,0,.18,1);
+        }
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.35);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-arrow:hover {
+            background: rgba(0,0,0,0.6);
+        }
+        .lightbox-arrow.left { left: -3rem; }
+        .lightbox-arrow.right { right: -3rem; }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.2rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10001;
+        }
+        .lightbox-img-slide-in {
+            transform: translateX(100vw);
+        }
+        .lightbox-img-slide-out {
+            transform: translateX(-100vw);
+        }
+        .lightbox-img-slide-in-reverse {
+            transform: translateX(-100vw);
+        }
+        .lightbox-img-slide-out-reverse {
+            transform: translateX(100vw);
+        }
+        @media (max-width: 900px) {
+            .lightbox-content, .lightbox-img-wrapper { max-width: 98vw; }
+            .lightbox-content img, .lightbox-img-wrapper { width: 98vw; max-width: 98vw; }
+            .lightbox-arrow.left { left: 0.2rem; }
+            .lightbox-arrow.right { right: 0.2rem; }
+        }
+        .footer-bar {
+            width: 100%;
+            background: #1e3a5c;
+            color: #fff;
+            border-radius: 1.2rem 1.2rem 0 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            animation: fadeIn 2s;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            position: relative;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0.7rem 0 0.2rem 0;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 0.2rem 1rem;
+            border-radius: 1rem;
+            white-space: nowrap;
+        }
+        .footer-links a:hover {
+            color: #f9a825;
+            background: rgba(255,255,255,0.08);
+        }
+        .footer-center {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 0.2rem 0 0.2rem 0;
+            user-select: none;
+            background: transparent;
+            box-sizing: border-box;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.7rem 0 2.5rem 0;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #1e3a5c;
+            border: none;
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(30,58,92,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            vertical-align: middle;
+        }
+        .lang-switcher:hover {
+            background: #f9a825;
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .footer-bottom-space {
+            height: 0.35rem;
+        }
+        @media (max-width: 600px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.7rem 0 0.2rem 0;
+            }
+            .footer-bottom {
+                padding-bottom: 3.2rem;
+            }
+            .footer-bottom-space {
+                height: 0.6rem;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
     <header>
+        <img src="img/image%20(11).png" alt="Soucy Industriel Logo" style="height:3.2rem;max-width:180px;border-radius:0.7rem;vertical-align:middle;margin-bottom:0.5rem;">
+        <!--
         <h1>CCQ Construction</h1>
+        -->
         <p>Building Your Future, One Project at a Time</p>
         <iframe src="navbar.html" style="border:none;width:100%;height:3.5rem;" scrolling="no"></iframe>
     </header>
-    <section>
-        <h3>Project Gallery</h3>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Project 1">
-            <img src="https://images.unsplash.com/photo-1503389152951-9c3d8b6e9a2f?auto=format&fit=crop&w=400&q=80" alt="Project 2">
-            <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=400&q=80" alt="Project 3">
-            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Project 4">
-        </div>
-    </section>
-    <section>
-        <h3>Our Recent Projects</h3>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Project 1">
-            <img src="https://images.unsplash.com/photo-1503389152951-9c3d8b6e9a2f?auto=format&fit=crop&w=400&q=80" alt="Project 2">
-            <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=400&q=80" alt="Project 3">
-            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Project 4">
-        </div>
-    </section>
-    <section>
-        <h3>Before & After</h3>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Before">
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="After">
-        </div>
-    </section>
-    <section>
-        <h3>Video Tour</h3>
+    <section class="gallery-card">
+        <h3 data-lang="fr">Vidéo de présentation</h3>
+        <h3 data-lang="en" style="display:none;">Video Tour</h3>
+        <h3 data-lang="es" style="display:none;">Video de presentación</h3>
         <div style="text-align:center;">
-            <iframe width="420" height="236" src="https://www.youtube.com/embed/1Q8fG0TtVAY" title="Project Tour" frameborder="0" allowfullscreen style="border-radius:1rem;"></iframe>
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D5243945309055902&show_text=false&width=420" width="420" height="236" style="border:none;overflow:hidden;border-radius:1rem;" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         </div>
     </section>
-    <footer>
-        &copy; 2025 CCQ Construction. All rights reserved.
-    </footer>
+    <section class="gallery-card">
+        <h3 data-lang="fr">Photos de l'entreprise</h3>
+        <h3 data-lang="en" style="display:none;">Company Photos</h3>
+        <h3 data-lang="es" style="display:none;">Fotos de la empresa</h3>
+        <div class="gallery" id="local-gallery">
+            <!-- Images will be populated by JS -->
+        </div>
+    </section>
+    <div class="footer-bar">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-center">
+            &copy; 2025 CCQ Construction.
+        </div>
+        <div class="footer-bottom">
+            <button class="lang-switcher" id="lang-switcher" title="Change language" aria-label="Change language">
+                <span id="lang-short">EN</span>
+            </button>
+            <div class="footer-bottom-space"></div>
+        </div>
+    </div>
+    <script>
+window.addEventListener('message', function(e) {
+    if(e.data && e.data.type === 'footer-height' && typeof e.data.height === 'number') {
+        var footer = document.querySelector('iframe[src="footer.html"]');
+        if (footer) {
+            footer.style.height = (e.data.height + 2) + 'px';
+        }
+    }
+});
+</script>
+    <script>
+    // --- Language switcher logic with icon and localStorage ---
+    const LANGS = ['en', 'fr', 'es'];
+    const LANG_LABELS = {en: 'EN', fr: 'FR', es: 'ES'};
+    let langIdx = 0;
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
+            el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+        });
+        var langShort = document.getElementById('lang-short');
+        if (langShort) langShort.textContent = LANG_LABELS[lang];
+        localStorage.setItem('site-lang', lang);
+    }
+    function getLangIdx(lang) {
+        return LANGS.indexOf(lang) !== -1 ? LANGS.indexOf(lang) : 0;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        let stored = localStorage.getItem('site-lang');
+        langIdx = getLangIdx(stored || 'en');
+        setLang(LANGS[langIdx]);
+        var langSwitcher = document.getElementById('lang-switcher');
+        if (langSwitcher) {
+            langSwitcher.addEventListener('click', function() {
+                langIdx = (langIdx + 1) % LANGS.length;
+                setLang(LANGS[langIdx]);
+            });
+        }
+        window.addEventListener('storage', function() {
+            let stored = localStorage.getItem('site-lang');
+            langIdx = getLangIdx(stored || 'en');
+            setLang(LANGS[langIdx]);
+        });
+    });
+    </script>
+    <script>
+    // --- Auto-populate gallery with images from img/ folder, skipping image (11).jpg ---
+    (function() {
+        const gallery = document.getElementById('local-gallery');
+        const maxImages = 19;
+        let found = false;
+        let imageElements = [];
+        for(let i=1; i<=maxImages; i++) {
+            if(i === 11) continue; // skip image (11).jpg
+            const img = new Image();
+            img.src = `img/image (${i}).jpg`;
+            img.alt = `Image ${i}`;
+            img.className = "gallery-img";
+            img.onerror = function() {
+                if(img.parentNode) img.parentNode.removeChild(img);
+            };
+            img.onload = function() {
+                gallery.appendChild(img);
+                imageElements.push(img);
+                found = true;
+            };
+        }
+        setTimeout(() => {
+            if(!found && gallery.childElementCount === 0) {
+                gallery.innerHTML = "<p style='text-align:center;color:#888;'>No images found in img/ folder.</p>";
+            }
+        }, 1000);
+
+        // Lightbox logic: show only one image, wide, with arrows and slide transition
+        let currentIdx = 0;
+        function openLightbox(idx) {
+            const imgs = imageElements;
+            if (imgs.length === 0) return;
+            currentIdx = idx;
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'lightbox-overlay';
+            overlay.tabIndex = 0;
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'lightbox-close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = () => document.body.removeChild(overlay);
+            overlay.appendChild(closeBtn);
+
+            // Arrows
+            const leftArrow = document.createElement('button');
+            leftArrow.className = 'lightbox-arrow left';
+            leftArrow.innerHTML = '&#8592;';
+            leftArrow.onclick = function(e) {
+                e.stopPropagation();
+                slideTo(currentIdx - 1, true);
+            };
+            const rightArrow = document.createElement('button');
+            rightArrow.className = 'lightbox-arrow right';
+            rightArrow.innerHTML = '&#8594;';
+            rightArrow.onclick = function(e) {
+                e.stopPropagation();
+                slideTo(currentIdx + 1, false);
+            };
+
+            // Content
+            const content = document.createElement('div');
+            content.className = 'lightbox-content';
+            const imgWrapper = document.createElement('div');
+            imgWrapper.className = 'lightbox-img-wrapper';
+            const img = document.createElement('img');
+            img.src = imgs[currentIdx].src;
+            img.alt = imgs[currentIdx].alt;
+            imgWrapper.appendChild(img);
+            content.appendChild(imgWrapper);
+            overlay.appendChild(content);
+
+            // Only show arrows if more than 1 image
+            if (imgs.length > 1) {
+                if (currentIdx > 0) content.appendChild(leftArrow);
+                if (currentIdx < imgs.length - 1) content.appendChild(rightArrow);
+            }
+
+            overlay.onclick = function(e) {
+                if (e.target === overlay) document.body.removeChild(overlay);
+            };
+            document.body.appendChild(overlay);
+            overlay.focus();
+
+            // Slide transition logic
+            function slideTo(newIdx, reverse) {
+                if (newIdx < 0 || newIdx >= imgs.length) return;
+                // Animate out current image
+                img.classList.add(reverse ? 'lightbox-img-slide-out-reverse' : 'lightbox-img-slide-out');
+                setTimeout(() => {
+                    img.classList.remove('lightbox-img-slide-out', 'lightbox-img-slide-out-reverse');
+                    img.src = imgs[newIdx].src;
+                    img.alt = imgs[newIdx].alt;
+                    img.classList.add(reverse ? 'lightbox-img-slide-in-reverse' : 'lightbox-img-slide-in');
+                    // Update arrows
+                    leftArrow.style.display = (newIdx > 0) ? '' : 'none';
+                    rightArrow.style.display = (newIdx < imgs.length - 1) ? '' : 'none';
+                    currentIdx = newIdx;
+                    setTimeout(() => {
+                        img.classList.remove('lightbox-img-slide-in', 'lightbox-img-slide-in-reverse');
+                    }, 300);
+                }, 300);
+            }
+        }
+
+        // Wait for all images to load before adding click listeners
+        setTimeout(() => {
+            imageElements = Array.from(gallery.querySelectorAll('.gallery-img'));
+            imageElements.forEach((img, idx) => {
+                img.style.cursor = "pointer";
+                img.onclick = () => openLightbox(idx);
+            });
+        }, 1200);
+    })();
+    </script>
 </body>
 </html>

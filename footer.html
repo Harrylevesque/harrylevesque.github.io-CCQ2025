@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: transparent !important;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-end;
+        }
+        .footer-bar {
+            width: 100%;
+            background: #1e3a5c;
+            color: #fff;
+            border-radius: 1.2rem 1.2rem 0 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            animation: fadeIn 2s;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            position: relative;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0.7rem 0 0.2rem 0;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 0.2rem 1rem;
+            border-radius: 1rem;
+            white-space: nowrap;
+        }
+        .footer-links a:hover {
+            color: #f9a825;
+            background: rgba(255,255,255,0.08);
+        }
+        .footer-center {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 0.2rem 0 0.2rem 0;
+            user-select: none;
+            background: transparent;
+            box-sizing: border-box;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.7rem 0 2.5rem 0;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #1e3a5c;
+            border: none;
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(30,58,92,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            vertical-align: middle;
+        }
+        .lang-switcher:hover {
+            background: #f9a825;
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .footer-bottom-space {
+            height: 0.35rem;
+        }
+        @media (max-width: 600px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.7rem 0 0.2rem 0;
+            }
+            .footer-bottom {
+                padding-bottom: 3.2rem;
+            }
+            .footer-bottom-space {
+                height: 0.6rem;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="footer-bar">
+    <div class="footer-links">
+        <a href="index.html" target="_parent">Home</a>
+        <a href="services.html" target="_parent">Services</a>
+        <a href="gallery.html" target="_parent">Gallery</a>
+        <a href="about.html" target="_parent">About</a>
+        <a href="contact.html" target="_parent">Contact</a>
+    </div>
+    <div class="footer-center">
+        <img src="img/image (11).jpg" alt="Footer Logo" style="height:2.2rem;max-width:120px;border-radius:0.5rem;vertical-align:middle;">
+    </div>
+    <div class="footer-bottom">
+        <button class="lang-switcher" id="lang-switcher" title="Change language" aria-label="Change language">
+            <span id="lang-short">EN</span>
+        </button>
+        <div class="footer-bottom-space"></div>
+    </div>
+</div>
+<script>
+const LANGS = ['en', 'fr', 'es'];
+const LANG_LABELS = {en: 'EN', fr: 'FR', es: 'ES'};
+let langIdx = 0;
+function setLang(lang) {
+    document.getElementById('lang-short').textContent = LANG_LABELS[lang];
+    localStorage.setItem('site-lang', lang);
+    if(window.parent && window.parent !== window) {
+        try {
+            window.parent.postMessage({type:'footer-height', height: document.body.scrollHeight}, '*');
+            window.parent.postMessage({type:'set-lang', lang}, '*');
+        } catch(e){}
+    }
+}
+function getLangIdx(lang) {
+    return LANGS.indexOf(lang) !== -1 ? LANGS.indexOf(lang) : 0;
+}
+function postHeightToParent() {
+    if(window.parent && window.parent !== window) {
+        try {
+            window.parent.postMessage({type:'footer-height', height: document.body.scrollHeight}, '*');
+        } catch(e){}
+    }
+}
+document.getElementById('lang-switcher').addEventListener('click', function() {
+    langIdx = (langIdx + 1) % LANGS.length;
+    setLang(LANGS[langIdx]);
+    setTimeout(postHeightToParent, 100);
+});
+window.addEventListener('DOMContentLoaded', function() {
+    let stored = localStorage.getItem('site-lang');
+    langIdx = getLangIdx(stored || 'en');
+    setLang(LANGS[langIdx]);
+    setTimeout(postHeightToParent, 100);
+});
+window.addEventListener('resize', function() {
+    setTimeout(postHeightToParent, 100);
+});
+</script>
+</body>
+</html>

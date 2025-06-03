@@ -6,73 +6,309 @@
     <title>Our Services - CCQ Construction</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .section-card {
+            background: #f8fafc;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(30,58,92,0.07);
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-bar { width: 100%; background: #1e3a5c; color: #fff; border-radius: 1.2rem 1.2rem 0 0; font-size: 1rem; letter-spacing: 1px; animation: fadeIn 2s; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; padding: 0; position: relative; }
+        .footer-links { display: flex; justify-content: center; align-items: center; gap: 1.5rem; width: 100%; padding: 0.7rem 0 0.2rem 0; box-sizing: border-box; flex-wrap: wrap; }
+        .footer-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: color 0.2s; padding: 0.2rem 1rem; border-radius: 1rem; white-space: nowrap; }
+        .footer-links a:hover { color: #f9a825; background: rgba(255,255,255,0.08); }
+        .footer-center { width: 100%; text-align: center; font-size: 1rem; padding: 0.2rem 0 0.2rem 0; user-select: none; background: transparent; box-sizing: border-box; }
+        .footer-bottom { width: 100%; display: flex; justify-content: center; align-items: center; padding: 0.7rem 0 2.5rem 0; box-sizing: border-box; flex-direction: column; }
+        .lang-switcher { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #1e3a5c; border: none; border-radius: 50%; width: 2.2rem; height: 2.2rem; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(30,58,92,0.10); transition: background 0.2s, color 0.2s, transform 0.2s; vertical-align: middle; }
+        .lang-switcher:hover { background: #f9a825; color: #fff; transform: scale(1.08); }
+        .footer-bottom-space {
+            height: 0.35rem;
+        }
+        @media (max-width: 600px) {
+            .footer-links { flex-direction: column; gap: 0.5rem; padding: 0.7rem 0 0.2rem 0; }
+            .footer-bottom { padding-bottom: 3.2rem; }
+            .footer-bottom-space {
+                height: 0.6rem;
+            }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
 <body>
     <header>
+        <img src="img/image%20(11).png" alt="Soucy Industriel Logo" style="height:3.2rem;max-width:180px;border-radius:0.7rem;vertical-align:middle;margin-bottom:0.5rem;">
+        <!--
         <h1>CCQ Construction</h1>
+        -->
         <p>Building Your Future, One Project at a Time</p>
         <iframe src="navbar.html" style="border:none;width:100%;height:3.5rem;" scrolling="no"></iframe>
     </header>
-    <section>
-        <h3>Our Services</h3>
+    <section class="section-card">
+        <h3 data-lang="en">Our Services</h3>
+        <h3 data-lang="fr" style="display:none;">Nos Services</h3>
+        <h3 data-lang="es" style="display:none;">Nuestros Servicios</h3>
         <div class="services">
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/worker-male.png" alt="General Contracting">
-                <h4>General Contracting</h4>
-                <p>Complete project management for residential and commercial builds.</p>
+                <h4 data-lang="en">General Contracting</h4>
+                <h4 data-lang="fr" style="display:none;">Entrepreneur général</h4>
+                <h4 data-lang="es" style="display:none;">Contratista general</h4>
+                <p data-lang="en">Comprehensive management for residential and commercial construction projects, ensuring quality and efficiency at every stage.</p>
+                <p data-lang="fr" style="display:none;">Gestion complète des projets résidentiels et commerciaux, garantissant qualité et efficacité à chaque étape.</p>
+                <p data-lang="es" style="display:none;">Gestión integral de proyectos residenciales y comerciales, asegurando calidad y eficiencia en cada etapa.</p>
             </div>
             <div class="service">
-                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/blueprint.png" alt="Design & Planning">
-                <h4>Design & Planning</h4>
-                <p>Expert architectural design and planning for your next project.</p>
+                <img src="https://img.icons8.com/ios-filled/100/1e3a5c/paper.png" alt="Design & Planning">
+                <h4 data-lang="en">Design & Planning</h4>
+                <h4 data-lang="fr" style="display:none;">Conception & Planification</h4>
+                <h4 data-lang="es" style="display:none;">Diseño y Planificación</h4>
+                <p data-lang="en">Professional architectural design and meticulous planning tailored to your project's unique requirements.</p>
+                <p data-lang="fr" style="display:none;">Conception architecturale professionnelle et planification minutieuse adaptées à vos besoins spécifiques.</p>
+                <p data-lang="es" style="display:none;">Diseño arquitectónico profesional y planificación meticulosa adaptados a los requisitos de su proyecto.</p>
             </div>
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/maintenance.png" alt="Renovation">
-                <h4>Renovation</h4>
-                <p>Modernize and upgrade your property with our renovation services.</p>
+                <h4 data-lang="en">Renovation</h4>
+                <h4 data-lang="fr" style="display:none;">Rénovation</h4>
+                <h4 data-lang="es" style="display:none;">Renovación</h4>
+                <p data-lang="en">Modernize and enhance your property with our expert renovation services, delivering lasting value and appeal.</p>
+                <p data-lang="fr" style="display:none;">Modernisez et valorisez votre propriété grâce à nos services de rénovation experts, pour un résultat durable et attrayant.</p>
+                <p data-lang="es" style="display:none;">Modernice y mejore su propiedad con nuestros servicios de renovación, brindando valor y atractivo duraderos.</p>
             </div>
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/crane.png" alt="Project Management">
-                <h4>Project Management</h4>
-                <p>Efficient and transparent management from start to finish.</p>
+                <h4 data-lang="en">Project Management</h4>
+                <h4 data-lang="fr" style="display:none;">Gestion de projet</h4>
+                <h4 data-lang="es" style="display:none;">Gestión de proyectos</h4>
+                <p data-lang="en">Transparent and efficient project management from inception to completion, ensuring your objectives are met on time and on budget.</p>
+                <p data-lang="fr" style="display:none;">Gestion de projet transparente et efficace, du début à la fin, pour garantir le respect de vos objectifs, délais et budgets.</p>
+                <p data-lang="es" style="display:none;">Gestión de proyectos eficiente y transparente de principio a fin, cumpliendo sus objetivos en tiempo y forma.</p>
             </div>
         </div>
     </section>
-    <section>
-        <h3>Our Process</h3>
+    <section class="section-card">
+        <h3 data-lang="en">Our Process</h3>
+        <h3 data-lang="fr" style="display:none;">Notre Processus</h3>
+        <h3 data-lang="es" style="display:none;">Nuestro Proceso</h3>
         <div class="services">
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/idea.png" alt="Consultation">
-                <h4>Consultation</h4>
-                <p>We start with a free consultation to understand your needs and vision.</p>
+                <h4 data-lang="en">Consultation</h4>
+                <h4 data-lang="fr" style="display:none;">Consultation</h4>
+                <h4 data-lang="es" style="display:none;">Consulta</h4>
+                <p data-lang="en">We begin with a complimentary consultation to understand your vision and requirements.</p>
+                <p data-lang="fr" style="display:none;">Nous commençons par une consultation gratuite pour comprendre votre vision et vos besoins.</p>
+                <p data-lang="es" style="display:none;">Comenzamos con una consulta gratuita para comprender su visión y necesidades.</p>
             </div>
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/plan.png" alt="Planning">
-                <h4>Planning</h4>
-                <p>Our experts design and plan every detail for a smooth project.</p>
+                <h4 data-lang="en">Planning</h4>
+                <h4 data-lang="fr" style="display:none;">Planification</h4>
+                <h4 data-lang="es" style="display:none;">Planificación</h4>
+                <p data-lang="en">Our team develops a detailed plan to ensure a seamless and successful project.</p>
+                <p data-lang="fr" style="display:none;">Notre équipe élabore un plan détaillé pour garantir un projet fluide et réussi.</p>
+                <p data-lang="es" style="display:none;">Nuestro equipo desarrolla un plan detallado para garantizar un proyecto exitoso y sin contratiempos.</p>
             </div>
             <div class="service">
                 <img src="https://img.icons8.com/ios-filled/100/1e3a5c/hammer.png" alt="Execution">
-                <h4>Execution</h4>
-                <p>We build with precision, quality, and safety at every step.</p>
+                <h4 data-lang="en">Execution</h4>
+                <h4 data-lang="fr" style="display:none;">Exécution</h4>
+                <h4 data-lang="es" style="display:none;">Ejecución</h4>
+                <p data-lang="en">We execute your project with precision, quality, and a strong focus on safety at every stage.</p>
+                <p data-lang="fr" style="display:none;">Nous réalisons votre projet avec précision, qualité et un souci constant de la sécurité à chaque étape.</p>
+                <p data-lang="es" style="display:none;">Ejecutamos su proyecto con precisión, calidad y un enfoque constante en la seguridad en cada etapa.</p>
             </div>
         </div>
     </section>
-    <section>
-        <h3>Client Success Stories</h3>
+    <section class="section-card">
+        <h3 data-lang="en">Client Testimonials</h3>
+        <h3 data-lang="fr" style="display:none;">Témoignages de clients</h3>
+        <h3 data-lang="es" style="display:none;">Testimonios de clientes</h3>
         <div class="services">
             <div class="service">
-                <p>"CCQ Construction made our dream home a reality. The process was smooth and the results were stunning!"</p>
+                <p data-lang="en">"CCQ Construction turned our dream home into reality. The process was seamless and the results exceeded our expectations!"</p>
+                <p data-lang="fr" style="display:none;">"CCQ Construction a concrétisé la maison de nos rêves. Le processus a été fluide et le résultat a dépassé nos attentes!"</p>
+                <p data-lang="es" style="display:none;">"¡CCQ Construction hizo realidad la casa de nuestros sueños! El proceso fue fluido y el resultado superó nuestras expectativas."</p>
                 <strong>- Emily R.</strong>
             </div>
             <div class="service">
-                <p>"Professional, efficient, and always available for questions. Highly recommend!"</p>
+                <p data-lang="en">"Professional, efficient, and always available for questions. Highly recommended!"</p>
+                <p data-lang="fr" style="display:none;">"Professionnels, efficaces et toujours disponibles pour répondre à nos questions. Je recommande vivement!"</p>
+                <p data-lang="es" style="display:none;">"Profesionales, eficientes y siempre disponibles para responder preguntas. ¡Muy recomendable!"</p>
                 <strong>- John S.</strong>
             </div>
         </div>
     </section>
-    <footer>
-        &copy; 2025 CCQ Construction. All rights reserved.
-    </footer>
+    <section>
+        <h3 data-lang="fr">Produits & Services</h3>
+        <h3 data-lang="en" style="display:none;">Products & Services</h3>
+        <h3 data-lang="es" style="display:none;">Productos y Servicios</h3>
+        <ul data-lang="fr">
+            <li>Ingénierie</li>
+            <li>Soudure</li>
+            <li>Construction</li>
+            <li>Usinage de précision</li>
+            <li>Fabrication</li>
+            <li>Maintenance</li>
+            <li>Réparation</li>
+            <li>Installation et remplacement d'appareils de production en chantier</li>
+        </ul>
+        <ul data-lang="en" style="display:none;">
+            <li>Engineering</li>
+            <li>Welding</li>
+            <li>Construction</li>
+            <li>Precision machining</li>
+            <li>Fabrication</li>
+            <li>Maintenance</li>
+            <li>Repair</li>
+            <li>Installation and replacement of production equipment on site</li>
+        </ul>
+        <ul data-lang="es" style="display:none;">
+            <li>Ingeniería</li>
+            <li>Soldadura</li>
+            <li>Construcción</li>
+            <li>Mecanizado de precisión</li>
+            <li>Fabricación</li>
+            <li>Mantenimiento</li>
+            <li>Reparación</li>
+            <li>Instalación y reemplazo de equipos de producción en obra</li>
+        </ul>
+    </section>
+    <section>
+        <h3 data-lang="fr">Division du travail</h3>
+        <h3 data-lang="en" style="display:none;">Work Division</h3>
+        <h3 data-lang="es" style="display:none;">División del trabajo</h3>
+        <ul data-lang="fr">
+            <li>Soudeurs</li>
+            <li>Mécaniciens</li>
+            <li>Spécialistes en usinage de précision</li>
+            <li>Ingénieurs</li>
+        </ul>
+        <ul data-lang="en" style="display:none;">
+            <li>Welders</li>
+            <li>Mechanics</li>
+            <li>Precision machining specialists</li>
+            <li>Engineers</li>
+        </ul>
+        <ul data-lang="es" style="display:none;">
+            <li>Soldadores</li>
+            <li>Mecánicos</li>
+            <li>Especialistas en mecanizado de precisión</li>
+            <li>Ingenieros</li>
+        </ul>
+    </section>
+    <section>
+        <h3 data-lang="fr">Compétences requises</h3>
+        <h3 data-lang="en" style="display:none;">Required Skills</h3>
+        <h3 data-lang="es" style="display:none;">Habilidades requeridas</h3>
+        <ul data-lang="fr">
+            <li><b>Mécaniciens:</b> dextérité et endurance</li>
+            <li><b>Soudeurs:</b> rigueur et savoir-faire</li>
+        </ul>
+        <ul data-lang="en" style="display:none;">
+            <li><b>Mechanics:</b> dexterity and endurance</li>
+            <li><b>Welders:</b> rigor and know-how</li>
+        </ul>
+        <ul data-lang="es" style="display:none;">
+            <li><b>Mecánicos:</b> destreza y resistencia</li>
+            <li><b>Soldadores:</b> rigor y experiencia</li>
+        </ul>
+    </section>
+    <section>
+        <h3 data-lang="fr">Matières premières</h3>
+        <h3 data-lang="en" style="display:none;">Raw Materials</h3>
+        <h3 data-lang="es" style="display:none;">Materias primas</h3>
+        <p data-lang="fr">L'entreprise utilise des matières premières comme l'acier, l'aluminium et du bois québécois pour fabriquer ses produits.</p>
+        <p data-lang="en" style="display:none;">The company uses raw materials such as steel, aluminum, and Quebec wood to manufacture its products.</p>
+        <p data-lang="es" style="display:none;">La empresa utiliza materias primas como acero, aluminio y madera de Quebec para fabricar sus productos.</p>
+    </section>
+    <section>
+        <h3 data-lang="fr">Secteurs économiques dépendants</h3>
+        <h3 data-lang="en" style="display:none;">Dependent Economic Sectors</h3>
+        <h3 data-lang="es" style="display:none;">Sectores económicos dependientes</h3>
+        <p data-lang="fr">Les secteurs économiques de l'usinage et de la soudure sont dépendants de cette entreprise.</p>
+        <p data-lang="en" style="display:none;">The machining and welding economic sectors depend on this company.</p>
+        <p data-lang="es" style="display:none;">Los sectores económicos del mecanizado y la soldadura dependen de esta empresa.</p>
+    </section>
+    <div class="footer-bar">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-center">
+            &copy; 2025 CCQ Construction.
+        </div>
+        <div class="footer-bottom">
+            <button class="lang-switcher" id="lang-switcher" title="Change language" aria-label="Change language">
+                <span id="lang-short">EN</span>
+            </button>
+            <div class="footer-bottom-space"></div>
+        </div>
+    </div>
+    <script>
+    // --- Language switcher logic with icon and localStorage ---
+    const LANGS = ['en', 'fr', 'es'];
+    const LANG_LABELS = {en: 'EN', fr: 'FR', es: 'ES'};
+    let langIdx = 0;
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
+            el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+        });
+        var langShort = document.getElementById('lang-short');
+        if (langShort) langShort.textContent = LANG_LABELS[lang];
+        localStorage.setItem('site-lang', lang);
+    }
+    function getLangIdx(lang) {
+        return LANGS.indexOf(lang) !== -1 ? LANGS.indexOf(lang) : 0;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        let stored = localStorage.getItem('site-lang');
+        langIdx = getLangIdx(stored || 'en');
+        setLang(LANGS[langIdx]);
+        var langSwitcher = document.getElementById('lang-switcher');
+        if (langSwitcher) {
+            langSwitcher.addEventListener('click', function() {
+                langIdx = (langIdx + 1) % LANGS.length;
+                setLang(LANGS[langIdx]);
+            });
+        }
+        window.addEventListener('storage', function() {
+            let stored = localStorage.getItem('site-lang');
+            langIdx = getLangIdx(stored || 'en');
+            setLang(LANGS[langIdx]);
+        });
+    });
+    </script>
+    <script>
+    // --- Language switcher logic with icon and localStorage ---
+    const LANGS = ['en', 'fr', 'es'];
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
+            el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+        });
+    }
+    function getLangIdx(lang) {
+        return LANGS.indexOf(lang) !== -1 ? LANGS.indexOf(lang) : 0;
+    }
+    function syncLangFromStorage() {
+        let stored = localStorage.getItem('site-lang');
+        let lang = LANGS[getLangIdx(stored || 'en')];
+        setLang(lang);
+    }
+    window.addEventListener('DOMContentLoaded', syncLangFromStorage);
+    window.addEventListener('storage', syncLangFromStorage);
+    window.addEventListener('message', function(e) {
+        if(e.data && e.data.type === 'set-lang' && LANGS.includes(e.data.lang)) {
+            setLang(e.data.lang);
+        }
+    });
+    </script>
 </body>
 </html>
